@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, DM_Sans } from "next/font/google";
+import { DM_Sans, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 
 const sans = DM_Sans({
@@ -7,24 +7,25 @@ const sans = DM_Sans({
   subsets: ["latin"],
 });
 
-const display = Cormorant_Garamond({
+const display = Instrument_Serif({
   variable: "--font-display",
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  weight: "400",
+  style: ["normal", "italic"],
 });
 
 export const metadata: Metadata = {
   title: "Micaela Wallace | Directora audiovisual",
-  description: "Portfolio audiovisual de Micaela Wallace, directora y técnica audiovisual en Montevideo.",
+  description: "Portfolio audiovisual de Micaela Wallace, directora y técnica audiovisual en Montevideo, Uruguay.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html
-      lang="es"
-      className={`${sans.variable} ${display.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">{children}</body>
+    <html lang="es" className={`${sans.variable} ${display.variable} h-full antialiased`}>
+      <body className="min-h-full flex flex-col">
+        {children}
+        <div className="grain" aria-hidden />
+      </body>
     </html>
   );
 }
